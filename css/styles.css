@@ -693,6 +693,7 @@ img {
 
 .backdrop.is-hidden .modal {
   transform: translate(-50%, -50%) scale(0.7);
+  opacity: 0;
 
 }
 
@@ -707,7 +708,9 @@ img {
   background-color: var(--white-color);
   box-shadow: var(--modal-shadow);
   border-radius: 4px;
-  transition: transform 250ms var(--timing-function);
+  opacity: 1;
+  transition: transform 250ms var(--timing-function),
+  opacity 250ms var(--timing-function);
 }
 
 .modal-button {
