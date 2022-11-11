@@ -636,6 +636,8 @@ img {
   font-size: 18px;
   line-height: 1.55;
   color: var(--white-color);
+  opacity: 0;
+  transition: opacity 250ms var(--timing-function) 150ms;
 }
 
 .projects-link:hover .projects-overlay,
@@ -643,6 +645,7 @@ img {
 .projects-link:hover .projects-overlay-text,
 .projects-link:focus .projects-overlay-text {
   transform: translateY(0);
+  opacity: 1;
 }
 
 .projects-name {
