@@ -22,10 +22,12 @@
     1px 4px 6px rgba(0, 0, 0, 0.16);
   --filtr-card-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.08),
     0px 2px 2px rgba(0, 0, 0, 0.12);
-  --modal-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.2);
+  --modal-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
+    0px 2px 1px rgba(0, 0, 0, 0.2);
   --list-gap: 30px;
   --social-gap: 10px;
   --filtr-gap: 8px;
+  --timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 body {
@@ -92,13 +94,13 @@ img {
   margin: -1px;
 }
 
-/* page header */
+/* ----------------------page header--------------------- */
 
 .page-header {
   border-bottom: 1px solid #ececec;
 }
 
-/* logo */
+/* -------------------------logo------------------------ */
 
 .logo-header {
   margin-right: 93px;
@@ -117,7 +119,7 @@ img {
   color: var(--accent-color);
 }
 
-/* site navigation */
+/* ---------------------site navigation-------------------- */
 
 .main-nav,
 .page-nav {
@@ -141,8 +143,10 @@ img {
   font-size: 14px;
   line-height: 1.14;
   letter-spacing: 0.02em;
+  transition: color 250ms var(--timing-function);
 }
 
+.site-nav .link::after,
 .site-nav .link.current::after {
   position: absolute;
   bottom: -1px;
@@ -153,6 +157,17 @@ img {
 
   background-color: var(--accent-color);
   border-radius: 2px;
+  transform: scaleX(0);
+  transition: transform 250ms var(--timing-function);
+}
+
+.site-nav .link.current::after {
+  transform: scaleX(1);
+}
+
+.site-nav .link:hover::after,
+.site-nav .link:focus::after {
+  transform: scaleX(1);
 }
 
 .site-nav .link:hover,
@@ -186,11 +201,13 @@ img {
   font-size: 14px;
   line-height: 1.14;
   letter-spacing: 0.02em;
+  transition: color 250ms var(--timing-function);
 }
 
 .nav-icon {
   margin-right: 10px;
   fill: currentColor;
+  transition: fill 250ms var(--timing-function);
 }
 
 .nav-icon:hover,
@@ -198,7 +215,7 @@ img {
   fill: var(--accent-color);
 }
 
-/* hero */
+/* -------------------------hero------------------------ */
 
 .section.hero {
   padding-top: 200px;
@@ -229,7 +246,7 @@ img {
   text-transform: uppercase;
 }
 
-/* feature */
+/* -------------------------feature------------------------ */
 
 .section.feature {
   padding-bottom: 0;
@@ -271,7 +288,7 @@ img {
   text-transform: uppercase;
 }
 
-/* Work */
+/* -------------------------work------------------------ */
 
 .work-list {
   display: flex;
@@ -302,7 +319,7 @@ img {
   background-color: var(--background-item-work);
 }
 
-/* Our team */
+/* ------------------------our team----------------------- */
 
 .section.team {
   background-color: var(--background-grey-color);
@@ -365,10 +382,15 @@ img {
   color: var(--client-icon-color);
   background-color: var(--white-color);
   border-radius: 50%;
+  transition: background-color 250ms var(--timing-function);
 }
 
 .social-icon {
   fill: currentColor;
+}
+
+.team-social-link svg {
+  transition: fill 250ms var(--timing-function);
 }
 
 .team-social-link:hover,
@@ -381,7 +403,7 @@ img {
   fill: var(--white-color);
 }
 
-/* button */
+/* -----------------------button----------------------- */
 
 .button {
   border-radius: 4px;
@@ -394,7 +416,6 @@ img {
 }
 
 .button.primary {
-
   min-width: 216px;
   height: 50px;
 
@@ -406,11 +427,11 @@ img {
   line-height: 1.88;
   text-align: center;
   letter-spacing: 0.06em;
+  transition: background-color 250ms var(--timing-function);
 }
 
 .button.primary:hover,
 .button.primary:focus {
-  color: var(--white-color);
   background-color: var(--background-active-button);
 }
 
@@ -423,20 +444,19 @@ img {
   font-size: 16px;
   line-height: 1.63;
   letter-spacing: 0.03em;
+  transition: color 250ms var(--timing-function),
+    background-color 250ms var(--timing-function),
+    box-shadow 250ms var(--timing-function);
 }
 
 .button.secondary:hover,
 .button.secondary:focus {
   color: var(--white-color);
   background-color: var(--accent-color);
-}
-
-.button.secondary:hover,
-.button.secondary:focus {
   box-shadow: var(--filtr-card-shadow);
 }
 
-/* Clients */
+/* ------------------------clients----------------------- */
 
 .client-list {
   display: flex;
@@ -457,6 +477,7 @@ img {
   border-radius: 4px;
 
   color: var(--client-icon-color);
+  transition: border 250ms var(--timing-function);
 }
 
 .client-link:hover,
@@ -473,7 +494,11 @@ img {
   color: var(--accent-color);
 }
 
-/* Footer */
+.client-link svg {
+  transition: color 250ms var(--timing-function);
+}
+
+/* -----------------------footer---------------------- */
 
 .page-footer {
   padding-top: 60px;
@@ -506,6 +531,7 @@ img {
 .adress-map {
   color: var(--white-color);
   font-style: normal;
+  transition: color 250ms var(--timing-function);
 }
 
 .adress-item:not(:last-child) {
@@ -516,6 +542,7 @@ img {
 .auth-tel {
   color: var(--black-opacity-color);
   font-style: normal;
+  transition: color 250ms var(--timing-function);
 }
 
 .active-social {
@@ -531,6 +558,7 @@ img {
   color: var(--white-color);
   background-color: var(--background-footer-icon);
   border-radius: 50%;
+  transition: background-color 250ms var(--timing-function);
 }
 
 .social-icon {
@@ -542,9 +570,9 @@ img {
   background-color: var(--background-active-button);
 }
 
-/* CSS styles for portfolio.html */
+/* ----------------CSS styles for portfolio.html------------- */
 
-/* Filtr section */
+/* -----------------------filtr section---------------------- */
 
 .filtr-list {
   display: flex;
@@ -553,7 +581,7 @@ img {
   margin-bottom: 50px;
 }
 
-/* Projects section */
+/* ---------------------Projects section---------------------- */
 
 .section .projects {
   padding-top: 0;
@@ -571,6 +599,7 @@ img {
 
 .projects-link {
   display: block;
+  transition: box-shadow 250ms var(--timing-function);
 }
 
 .projects-link:hover,
@@ -580,20 +609,21 @@ img {
 
 .projects-thumb {
   position: relative;
+  overflow: hidden;
 }
 
-.projects-thumb::before {
-  content: '';
+.projects-overlay {
   position: absolute;
   left: 0;
   top: 0;
   width: 100%;
   height: 100%;
   background-color: var(--background-item-projects);
-  opacity: 0;
+  transform: translateY(100%);
+  transition: transform 250ms var(--timing-function);
 }
 
-.projects-thumb-text {
+.projects-overlay-text {
   position: absolute;
   left: 0;
   top: 0;
@@ -606,14 +636,15 @@ img {
   font-size: 18px;
   line-height: 1.55;
   color: var(--white-color);
-
-  opacity: 0;
 }
 
-.projects-link:hover .projects-thumb::before,
-.projects-link:hover .projects-thumb-text {
-  opacity: 1;
+.projects-link:hover .projects-overlay,
+.projects-link:focus .projects-overlay,
+.projects-link:hover .projects-overlay-text,
+.projects-link:focus .projects-overlay-text {
+  transform: translateY(0);
 }
+
 .projects-name {
   padding: 20px 24px;
   border: 1px solid var(--projects-border-color);
@@ -636,7 +667,7 @@ img {
   line-height: 1.88;
 }
 
-/* Modal window */
+/* -----------------------Modal window---------------------- */
 
 .backdrop {
   position: fixed;
@@ -645,11 +676,17 @@ img {
   width: 100%;
   height: 100%;
   background-color: var(--background-backdrop);
+  transform: scaleX(1);
+  opacity: 1;
+
+  transition: opacity 250ms var(--timing-function),
+    transform 250ms var(--timing-function);
 }
 
 .backdrop.is-hidden {
   opacity: 0;
   pointer-events: none;
+  transform: scaleX(0);
 }
 
 .modal {
@@ -663,6 +700,8 @@ img {
   background-color: var(--white-color);
   box-shadow: var(--modal-shadow);
   border-radius: 4px;
+
+
 }
 
 .modal-button {
